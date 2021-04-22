@@ -1,2 +1,2 @@
-# cusro-full-cycle-2.0
-Cusro Full Cycle 2.0
+# curso-full-cycle-2.0
+Curso Full Cycle 2.0
