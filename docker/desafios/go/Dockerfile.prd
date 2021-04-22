@@ -1,0 +1,15 @@
+FROM golang as build
+
+WORKDIR /go/src/app
+COPY . .
+
+RUN go get -d -v ./...
+RUN go install -v ./...
+RUN go build -v
+
+CMD ["hello"]
+
+FROM scratch
+WORKDIR /go/src/app
+COPY --from=build /go/src/app/hello .
+ENTRYPOINT ["/go/src/app/hello"]

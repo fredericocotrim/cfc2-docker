@@ -1,0 +1,60 @@
+
+https://hub.docker.com/_/golang
+https://golang.org/doc/tutorial/getting-started
+
+# 1 - Executar
+
+  docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go mod init example.com/hello
+
+# 2 - Criar arquivo hello.go com código
+
+  package main
+
+  import "fmt"
+
+  func main() {
+    fmt.Println("Code.education Rocks!")
+  }
+
+# 3 - Executar
+
+  docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go build -v
+
+# 4 - Executar
+
+  docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go run .
+	
+  ou
+	
+  docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go run hello.go
+	
+  ou
+	
+  ./hello
+
+# 5 - Criar Dockerfile
+
+# Apagar containers e imagens
+
+  docker rm $(docker ps -aq) -f
+  docker rmi $(docker images -q)
+
+# Build 
+
+  docker build -t fredericocotrim/docker-desafio-go .
+  
+  ou
+  
+  docker build -t fredericocotrim/docker-desafio-go . -f Dockerfile.prd 
+
+# Publicar
+  
+  docker push fredericocotrim/docker-desafio-go
+
+# Executar
+
+  docker run --rm fredericocotrim/docker-desafio-go
+  
+  ou
+  
+  docker run -it --rm --name docker-desafio-go fredericocotrim/docker-desafio-go

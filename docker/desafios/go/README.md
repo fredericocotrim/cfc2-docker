@@ -1,0 +1,1 @@
+docker run --rm fredericocotrim/docker-desafio-go
