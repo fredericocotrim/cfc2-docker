@@ -1,0 +1,130 @@
+
+# Rodar container
+
+docker run nginx
+docker run -p 8080:80 nginx
+
+# Rodar container e apagar 
+
+docker run --rm nginx
+
+# Rodar container Detached
+
+docker run -d nginx
+
+# Iniciar container
+
+docker start <CONTAINER ID>
+
+# Parar container
+
+docker stop <CONTAINER ID>
+
+# Rodar container e compartilhar volume
+
+docker run -d -v $(pwd):/usr/src/app <IMAGE>
+docker run -d -v ~/docker/html/:/usr/share/nginx/html <IMAGE>
+docker run -d -v <VOLUME NAME>:/usr/src/app <IMAGE>
+
+docker run -d --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html <IMAGE>
+
+docker run -d --mount type=volume,source=<VOLUME NAME>,target=/usr/share/nginx/html <IMAGE>
+
+# Rodar container e informar o nome
+
+docker run -d --name=<CONTAINER NAME> <CONTAINER ID>
+
+# Executar comando container
+
+docker exec <CONTAINER ID> <COMANDO>
+
+  ex.: docker exec <CONTAINER ID> echo 1
+
+# Executar comando modo interativo container
+
+docker exec -it <CONTAINER ID> <COMANDO>
+
+  ex.: docker exec -it <CONTAINER ID> bash
+
+# Listar containers rodando
+
+docker ps
+
+# Listar todos containers
+
+docker ps -a
+
+# Listar todos ids de container
+
+docker ps -aq
+
+# Remover container
+
+docker rm <CONTAINER ID>
+
+# Remover todos ids de container (forçar se tiver rodando)
+
+docker rm $(docker ps -aq) -f
+
+# Listar todas imagens
+
+docker images
+
+# Remover imagem
+
+docker rmi <IMAGE ID>
+
+# Remover todos ids de imagem
+
+docker rmi $(docker images -q)
+
+# Criar rede
+
+docker network create <NETWORK NAME>
+
+# Rodar container com rede
+
+docker run -d --network=<NETWORK NAME> <CONTAINER ID>
+
+# Criar volume
+
+docker volume create <NAME>
+
+# Listar volumes
+
+docker volume ls
+
+# Inspecionar volume
+
+docker volume inspect <NAME>
+
+# Limpar volumes não utilizados
+
+docker volume prune
+
+# Listar redes
+
+docker network ls
+
+# Inspecionar rede
+
+docker network inspect <NAME>
+
+# Limpar redes não utilizadas
+
+docker network prune
+
+# Criar rede
+
+docker network create --driver bridge <NAME>
+
+# Ver logs
+
+docker logs <CONTAINER ID>
+
+# Docker Compose
+
+docker-compose up -d
+docker-compose up -d --build
+
+docker-compose down
