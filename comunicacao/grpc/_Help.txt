@@ -1,0 +1,15 @@
+
+docker run --rm -it -v "$PWD"/comunicacao/grpc:/go/src/app -w /go/src/app golang
+
+apt-get update
+apt-get install
+
+apt install protobuf-compiler
+PATH="/go/bin:$PATH"
+source ~/.bashrc
+
+protoc --proto_path=proto proto/*.proto --go_out=pb
+protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
+
+go run cmd/server/server.go
+go run cmd/client/client.go
