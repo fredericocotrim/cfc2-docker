@@ -1,0 +1,19 @@
+
+# 1 - Executar container
+
+docker run --rm -it -v "$PWD"/comunicacao/graphql:/go/src/app -w /go/src/app -p "8080":"8080" golang
+
+# 2 - Executar dentro do container
+
+go get github.com/99designs/gqlgen
+
+go get github.com/vektah/gqlparser/v2@v2.1.0
+go get github.com/vektah/gqlparser/v2/ast@v2.1.0
+
+go run github.com/99designs/gqlgen init
+
+chown -R 1000:1000 ./
+
+go run github.com/99designs/gqlgen generate
+
+go run server.go
