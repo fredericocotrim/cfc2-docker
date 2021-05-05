@@ -1,2 +1,2 @@
-# curso-full-cycle-2.0
-Curso Full Cycle 2.0
+# cfc2-docker
+Curso Full Cycle 2.0 - Docker
